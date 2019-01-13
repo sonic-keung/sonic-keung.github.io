@@ -1,0 +1,34 @@
+ html, body {
+    height: 100%;
+	background-color: #FFFFFF;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+h1 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+img {
+  border-radius: 50%;
+  max-width: 100%;
+  height: auto;
+}
