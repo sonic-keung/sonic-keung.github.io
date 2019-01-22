@@ -1,5 +1,5 @@
 
-var questions = [
+let questions = [
 					{
 						questionId: "1) What would be the output of this script?" + 
 						   "<div>" + '<span style="color: #ff0000;">let</span>' + " mul = 2;" + "</div>" +
@@ -50,20 +50,20 @@ var questions = [
 				];
 
 function displayQuestions() {
-  var numOfQuestions = prompt("How many questions? (1 to 5 only)");
+  let numOfQuestions = prompt("How many questions? (1 to 5 only)");
   
 if(numOfQuestions > 0 && numOfQuestions < 6) {
-  for (var i = 0; i < numOfQuestions; i++) {
-	  var thisQuestion = questions[i];	  
-	  var theValues = thisQuestion.values;
-	  var theInput;
-	  var label = document.createElement("label");
-	  var theForm = document.createElement("form");
+  for (let i = 0; i < numOfQuestions; i++) {
+	  let thisQuestion = questions[i];	  
+	  let theValues = thisQuestion.values;
+	  let theInput;
+	  let label = document.createElement("label");
+	  let theForm = document.createElement("form");
 	  
       theForm.setAttribute('name', thisQuestion.formName);
 	  	  
-    for (var j = 0; j < theValues.length; j++) { 
-	  theInput = document.createElement("input");
+    for (let j = 0; j < theValues.length; j++) { 
+      theInput = document.createElement("input");
       theInput.setAttribute('type', "radio");
       theInput.setAttribute('name', thisQuestion.radioName);
       theInput.setAttribute('value', theValues[j]);
@@ -72,9 +72,8 @@ if(numOfQuestions > 0 && numOfQuestions < 6) {
 	
       label.appendChild(theInput);
       label.innerHTML += "<span>" + theValues[j] + "</span><br/>";
-      //--we add the label to the form.
       theForm.appendChild(label);
-	}
+    }
 	 document.body.innerHTML += thisQuestion.questionId;
 	 document.body.appendChild(theForm);
   }
