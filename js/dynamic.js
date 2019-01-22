@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6491a704cb9d552aaaa3c5e9cf1f5658e0a93bae
 let questions = [
 					{
 						questionId: "1) What would be the output of this script?" + 
@@ -48,6 +52,7 @@ let questions = [
 					}
 				];
 
+<<<<<<< HEAD
 
 let numOfQuestions = prompt("How many questions? (1 to 5 only)");
   
@@ -81,5 +86,39 @@ if(numOfQuestions > 0 && numOfQuestions < 6) {
 } else {
 	alert("Must be a number between 0 - 5")
 	displayQuestions();
+=======
+function displayQuestions() {
+  let numOfQuestions = prompt("How many questions? (1 to 5 only)");
+  
+if(numOfQuestions > 0 && numOfQuestions < 6) {
+  for (let i = 0; i < numOfQuestions; i++) {
+	  let thisQuestion = questions[i];	  
+	  let theValues = thisQuestion.values;
+	  let theInput;
+	  let label = document.createElement("label");
+	  let theForm = document.createElement("form");
+	  
+      theForm.setAttribute('name', thisQuestion.formName);
+	  	  
+    for (let j = 0; j < theValues.length; j++) { 
+      theInput = document.createElement("input");
+      theInput.setAttribute('type', "radio");
+      theInput.setAttribute('name', thisQuestion.radioName);
+      theInput.setAttribute('value', theValues[j]);
+	  
+	  console.log(thisQuestion);
+	
+      label.appendChild(theInput);
+      label.innerHTML += "<span>" + theValues[j] + "</span><br/>";
+      theForm.appendChild(label);
+    }
+	 document.body.innerHTML += thisQuestion.questionId;
+	 document.body.appendChild(theForm);
+  }
+ } else {
+	alert("Must be a number between 0 - 5")
+	displayQuestions();
+ }
+>>>>>>> 6491a704cb9d552aaaa3c5e9cf1f5658e0a93bae
 }
 
