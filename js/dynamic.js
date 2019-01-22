@@ -52,6 +52,7 @@ var questions = [
 function displayQuestions() {
   var numOfQuestions = prompt("How many questions? (1 to 5 only)");
   
+if(numOfQuestions > 0 && numOfQuestions < 6) {
   for (var i = 0; i < numOfQuestions; i++) {
 	  var thisQuestion = questions[i];	  
 	  var theValues = thisQuestion.values;
@@ -77,4 +78,8 @@ function displayQuestions() {
 	 document.body.innerHTML += thisQuestion.questionId;
 	 document.body.appendChild(theForm);
   }
+ } else {
+	alert("Must be a number between 0 - 5")
+	displayQuestions();
+ }
 }
