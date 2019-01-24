@@ -48,9 +48,9 @@ let questions = [
 					}
 				];
 
-let numOfQuestions = prompt("How many questions? (1 to 5 only)");
+let numOfQuestions = prompt("How many questions? (0 to 5)");
   
-if(numOfQuestions > 0 && numOfQuestions < 6) {
+if(numOfQuestions >= 0 && numOfQuestions <= 6) {
 	for (let i = 0; i < numOfQuestions; i++) {
 		let thisQuestion = questions[i];	  
 		let theValues = thisQuestion.values;
