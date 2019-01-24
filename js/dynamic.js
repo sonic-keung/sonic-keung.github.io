@@ -77,8 +77,5 @@ if(numOfQuestions > 0 && numOfQuestions < 6) {
 		document.body.innerHTML += thisQuestion.questionId;
 		document.body.appendChild(theForm);
 	}
-} else {
-	alert("Must be a number between 0 - 5")
-	displayQuestions();
 }
 
