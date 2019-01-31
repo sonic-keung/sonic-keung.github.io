@@ -1,0 +1,72 @@
+  <!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="stylesheet" type="text/css" href="../../../../styles/styles.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+<title>Admin Page</title>
+</head>
+<body>
+<form id="myForm">
+	<div class="form-group">
+		<label>Question Text *</label>
+		<input type="text" class="form-control" id="question">
+	</div>
+	
+	<label>Answers *</label>
+<br />
+	<input type="radio" name="mc">
+	<input type="text" id="answer0">
+<br />
+<br />
+	<input type="radio" name="mc">
+	<input type="text" id="answer1">
+<br />	
+<br />
+	<input type="radio" name="mc">
+	<input type="text" id="answer2">
+<br />		
+<br />
+	<input type="radio" name="mc">
+	<input type="text" id="answer3">
+<br />
+<br />
+</form>
+
+<!-- <h3>Quiz Questions</h3> -->
+<div id="questionList">
+	<table id="table" border="1">
+		<tr>
+			<th>Question</th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</table>
+</div>
+
+<br />
+<br />
+
+<button class="btn btn-success" onclick="addQuiz()" type="button">Add</button>
+<button class="btn btn-light" onclick="storeQuiz()"type="button">Save</button>
+<button class="btn btn-dark" onclick="editQuestion()"type="button">Edit</button>
+<button class="btn btn-danger" onclick="deleteQuestion()" type="button">Delete</button>
+<button class="btn btn-danger" onclick="clearStorage()" type="button">Clear Storage</button>
+<button class="btn btn-primary" onclick="location.href='../../../COMP4711.html'" type="button">Back</button>
+
+		
+<br />
+
+<div id="result"></div>
+<script src="../../../js/generator.js"></script>
+
+<br />
+<br /> 
+</body>
+</html>
