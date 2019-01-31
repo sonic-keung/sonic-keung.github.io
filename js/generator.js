@@ -120,7 +120,6 @@ function editQuestion() {
 		table.rows[rowIndex].cells[4].innerHTML = q4;		
 	}
 	console.log(storeToJson);
-	alert("Question updated");
 	let clearInput = document.getElementById("myForm");
 	clearInput.reset();
 }
