@@ -23,7 +23,7 @@ function displayQuestions() {
 		
 		label.innerHTML += "<br />";
 		theForm.setAttribute('id', 'myQuestion');
-		label.innerHTML += label.value + "<br/>";
+		label.innerHTML += i + 1 + ") " + label.value + "<br/>";
 		theForm.appendChild(label);
 		  
 		for (let j = 0; j < mcOption; j++) { 
