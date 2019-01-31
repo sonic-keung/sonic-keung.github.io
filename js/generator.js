@@ -2,6 +2,42 @@ let storeToJson = [];
 let index = 0; // number of questions added or deleted
 let rowIndex, table = document.getElementById("table");
 
+function addQuiz() {
+	
+	if (!isEmpty()) {
+		const mcOptions = 4;
+		let answer; // store answer to checked radio
+		let questions =  document.getElementById("question").value;
+		let radios = document.getElementsByName("mc");
+		let parseData = {};
+		let radioChoice = [];
+		
+		/* 
+		loop through radios and checks if one is selected
+		and assigns answer to the checked radio.
+		*/
+		for (let i = 0; i < mcOptions; i++) {
+			radioChoice[i] = document.getElementById("answer" + i).value;
+			if (radios[i].type === 'radio' && radios[i].checked) {
+				answer = i;
+				console.log(answer);
+			} 
+		}
+	
+		parseData.QuestionNum = index; // store question id
+		parseData.Question = questions; // store question 
+		parseData.Choices = radioChoice; // store radio choices
+		parseData.Answer = answer; // store correct answer
+		
+		storeToJson.push(parseData);
+		index++;
+		console.log(storeToJson);
+		addToTable();
+	}
+	let clearInput = document.getElementById("myForm");
+	clearInput.reset();
+}
+
 function addToTable() {
 	if(!isEmpty()) {
 		let newRow = table.insertRow(table.length), 
@@ -105,33 +141,6 @@ function deleteQuestion() {
 }
 
 function storeQuiz() {
-	let radios = document.getElementsByName("mc");
-	let answer;
-	let radioChoice = [];	
-	let parseData = {};
-
-	/* 
-	loop through radios and checks if one is selected
-	and assigns answer to the checked radio.
-	*/
-	for (let i = 0; i < 4; i++) {
-		radioChoice[i] = document.getElementById("answer" + i).value;
-		if (radios[i].type === 'radio' && radios[i].checked) {
-			answer = i;
-			console.log(answer);
-		} 
-	}
-	
-	let checkRow = document.getElementById("table").getElementsByTagName("tr").length;
-	for(let i = 1 ; i < checkRow; i ++){
-			let q = document.getElementsByTagName('table')[0].rows[i].cells[0].textContent;
-			parseData.Question = q;
-	}
-	
-	parseData.Choices = radioChoice;
-	parseData.Answer = answer;
-	storeToJson.push(parseData);
-
 	localStorage.setItem('myJson', JSON.stringify(storeToJson));
 	alert("Quiz saved to local storage");
 }
