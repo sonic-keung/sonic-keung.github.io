@@ -1,6 +1,6 @@
 function retrieveQuiz() {
 	// Retrieve json
-	let retrievedObject = localStorage.getItem('storeToJson');
+	let retrievedObject = localStorage.getItem('myJson');
 	let parsedObject = JSON.parse(retrievedObject);
 			
 	if (parsedObject === null) {
