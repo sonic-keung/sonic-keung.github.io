@@ -62,10 +62,10 @@ var questions = [
 						values:["a) 0 1 2 3 4 ", "b) 1 2 3 4 5", "c) 0 1 2 3 4 5", "d) None of the above"]
 					},
 					{
-						questionId: "10) " + '<span style="color: #ff0000;">var</span>' + " A and " + '<span style="color: #ff0000;">var</span>' + " a are two different variables.", 
+						questionId: "10) How do you get all elements matching specified selector(s)?" ,
 						formName:"form5", 
 						radioName:"q5", 
-						values:["a) It refers to the object it belongs to", "b) a word", "c) this", "d) None of the above"]
+						values:["a) document.querySelectorAll", "b) document.querySelectorAll", "c) document.getElementById", "d) None of the above"]
 					}
 				];
 				
