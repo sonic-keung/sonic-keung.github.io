@@ -149,6 +149,7 @@ function nextStage() {
 
 function terminateGame() {
     if (confirm('Terminating game, quit?')) {
+	localStorage.setItem("Score", startingScore);
         window.location = 'summary.html';
     }
 }
