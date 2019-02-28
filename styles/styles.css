@@ -36,3 +36,49 @@ img {
 span.marker {
 	background-color: #00ff00;
 }
+
+.box {
+  width: 70px;
+  height: 70px;
+  padding: 4px;
+  -o-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  border: 4px solid #fff;
+  background-color:rgb(41, 39, 39);
+}
+
+
+.box.flip {
+  transform: rotateY(180deg);
+  background-color: rgb(49, 89, 218);
+}
+
+.containerrotate {
+  animation: spin 1.5s linear;
+  transform: rotate(90deg); 
+}
+
+.flipCorrect {
+  background-color: rgb(49, 89, 218);
+  transform: rotateY(180deg);
+  transition: transform 1s, background-color 2s;
+}
+
+.flipIncorrect {
+  background-color: rgb(173, 11, 60);
+  transform: rotateY(180deg);
+  transition: transform 1s, background-color 2s;
+}
+
+.back {
+  background-color:rgb(41, 39, 39);
+  transform: rotateY(0deg);
+  transition: transform 1s, background-color 0.75s;
+}
+
+@-webkit-keyframes spin { 0% { -webkit-transform: rotate(0deg); } 50% { -webkit-transform: rotate(90deg); } }
+
