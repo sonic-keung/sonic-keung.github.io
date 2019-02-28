@@ -1,12 +1,15 @@
 let startingX = 3;
 let startingY = 2;
+let maxSize = 7;
 let startingScore = 1;
 let isCorrect;
+let numOfTiles = startingY + 2;
 let correctTiles = [];
+let perfectTry = true;
 
 // create matrix 
 function createGrid(width, height) {
-    getRightTiles(startingX, startingY, startingY + 2);
+    getRightTiles(startingX, startingY);
 	let container = document.getElementById('container');
     container.innerHTML = '';
 
@@ -48,6 +51,7 @@ function createGrid(width, height) {
 // rotates the matrix 90 degrees
 function rotate() {
     let rotate = document.getElementById('container');
+    rotate.classList.remove('containerrotate');
     rotate.classList.add('containerrotate');
 }
 
@@ -64,7 +68,7 @@ function generateRandomTiles(max) {
     return Math.floor(Math.random() * max);
 }
 
-function getRightTiles(tileX, tileY, correcTiles) {
+function getRightTiles(tileX, tileY) {
     for(let i = 0; i < tileX; i++) {
         correctTiles[i] = [];
         for(let j = 0; j < tileY; j++) {
@@ -72,7 +76,7 @@ function getRightTiles(tileX, tileY, correcTiles) {
         }
     }
 
-    for(let i = 0; i < correcTiles; i++) {
+    for(let i = 0; i < numOfTiles; i++) {
         let x = generateRandomTiles(tileX);
         let y = generateRandomTiles(tileY);
         if (correctTiles[x][y] == 0) {
@@ -80,44 +84,95 @@ function getRightTiles(tileX, tileY, correcTiles) {
         } else {
             i--;
         } 
-        isCorrect = correctTiles;
+        isCorrect = numOfTiles;
         console.log(isCorrect);
     }
 }
-
-$(document).ready(function() {
-    setTimeout(function() {
-        setTimeout(function() {
-            rotate();
-        }, 1000);
-    }, 1500);
-});
 
 function flipTilesScore() {
     if (this.classList.contains('correct')) {
         this.classList.remove('back');
         this.classList.add('flipCorrect');
         startingScore++;
+        isCorrect--;
+        console.log(isCorrect);
     } else if (this.classList.contains('incorrect')) {
         this.classList.add('flipIncorrect');
         startingScore--;
+        perfectTry = false;
         if(startingScore == 0) {
             alert('You lose');
             window.location = 'summary.html';
         }
     }
+
+    if (isCorrect == 0) {
+        setTimeout(function () {
+            clearBoard();
+    
+        }, 2000);
+       playSound();
+       setTimeout(function() {
+            nextStage();
+            let rotate = document.getElementById('container');
+            rotate.classList.remove('containerrotate');
+        }, 5000);
+    }
     document.getElementById('score').innerHTML = 'Score: ' + startingScore;
 }   
+
+function nextStage() {
+    if (perfectTry === false) {
+        getRightTiles(startingX, startingY);
+        createGrid(startingX, startingY);
+        setTimeout(function() {
+        rotate();
+        }, 3000);
+    } else {
+        numOfTiles++;
+        if (startingX <= maxSize) {
+            startingX++;
+        } 
+        
+        if (startingY <= maxSize) {
+            startingY++;
+        }
+    
+        getRightTiles(startingX, startingY);
+        createGrid(startingX, startingY);
+        setTimeout(function() {
+            rotate();
+        }, 3000);
+    }
+}
+
 
 function terminateGame() {
     alert('Terminating game');
     window.location = 'summary.html';
 }
 
-// load the board and right tiles
+function playSound() {
+    let playSound = document.getElementById('soundTest');
+    playSound.play();
+}
+
+function clearBoard() {
+    let tiles = document.getElementById('container');
+
+    while(tiles.hasChildNodes()) {
+        tiles.removeChild(tiles.firstChild);
+    }
+}
+
+// load the board and correct tiles
 window.addEventListener('load', function() {
     // generate a starting 3x3 grid
     createGrid(startingX, startingY);
+    setTimeout(function() {
+        rotate();
+    }, 3000);
     document.getElementById('terminate').onclick = terminateGame;
 });
+
 
