@@ -148,8 +148,9 @@ function nextStage() {
 
 
 function terminateGame() {
-    alert('Terminating game');
-    window.location = 'summary.html';
+    if (confirm('Terminating game, quit?')) {
+        window.location = 'summary.html';
+    }
 }
 
 function playSound() {
