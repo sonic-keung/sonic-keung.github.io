@@ -85,15 +85,6 @@ function getRightTiles(tileX, tileY, correcTiles) {
     }
 }
 
-function nextLevel() {
-    if(startingX == rowCount && columnCount <= 7) {
-        columnCount++;
-    }
-    else if(columnCount > rowCount && columnCount <= 7) {
-        rowCount++;
-    }
-}
-
 $(document).ready(function() {
     setTimeout(function() {
         setTimeout(function() {
