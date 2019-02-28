@@ -1,6 +1,8 @@
 let startingX = 3;
 let startingY = 2;
 let maxSize = 7;
+let minSize = 2;
+let minSizeX = 3;
 let startingScore = 1;
 let isCorrect;
 let numOfTiles = startingY + 2;
@@ -132,8 +134,14 @@ function flipTilesScore() {
 function nextStage() {
     miss = 0;
     if (perfectTry === false) {
-        startingX--;
-        startingY--;
+        if (startingX <= minSizeX && startingY <= minSize) {
+            startingX = 3;
+            startingY = 2;
+            numOfTiles = 3;
+        } else {
+            startingX--;
+            startingY--;
+        }
         numOfTiles--;
         getRightTiles(startingX, startingY);
         createGrid(startingX, startingY);
