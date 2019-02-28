@@ -6,6 +6,7 @@ let isCorrect;
 let numOfTiles = startingY + 2;
 let correctTiles = [];
 let perfectTry = true;
+let miss = 0;
 
 // create matrix 
 function createGrid(width, height) {
@@ -95,11 +96,18 @@ function flipTilesScore() {
         this.classList.add('flipCorrect');
         startingScore++;
         isCorrect--;
+        if (miss === 0) {
+            perfectTry = true;
+        }
         console.log(isCorrect);
     } else if (this.classList.contains('incorrect')) {
         this.classList.add('flipIncorrect');
         startingScore--;
         perfectTry = false;
+        miss++;
+        if (miss !== 0) {
+            perfectTry = false;
+        }
         if(startingScore == 0) {
             alert('You lose');
             window.location = 'summary.html';
@@ -122,13 +130,18 @@ function flipTilesScore() {
 }   
 
 function nextStage() {
+    miss = 0;
     if (perfectTry === false) {
+        startingX--;
+        startingY--;
+        numOfTiles--;
         getRightTiles(startingX, startingY);
         createGrid(startingX, startingY);
         setTimeout(function() {
-        rotate();
+            rotate();
         }, 3000);
     } else {
+        perfectTry = true;
         numOfTiles++;
         if (startingX <= maxSize) {
             startingX++;
@@ -146,10 +159,9 @@ function nextStage() {
     }
 }
 
-
 function terminateGame() {
     if (confirm('Terminating game, quit?')) {
-	localStorage.setItem("Score", startingScore);
+        localStorage.setItem("Score", startingScore);
         window.location = 'summary.html';
     }
 }
@@ -161,11 +173,11 @@ function playSound() {
 
 function clearBoard() {
     let tiles = document.getElementById('container');
-
     while(tiles.hasChildNodes()) {
         tiles.removeChild(tiles.firstChild);
     }
 }
+
 
 // load the board and correct tiles
 window.addEventListener('load', function() {
