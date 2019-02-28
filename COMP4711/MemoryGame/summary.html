@@ -8,19 +8,31 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-<title>Memory Game</title>
+<title>Summary</title>
 </head>
 <body>
     <div class="col-md-8">
         <form action='leaderboard.html'>
-            <h2>Enter Name: </h2>
-            <input type="text" id='name'>
+            <h3>Enter Name: </h3>
+            <input type="text" id="name">
             <br/>
             <br />
-            <button class="btn btn-primary" type="submit" value='Submit'>Submit</button>
+            <button class="btn btn-primary" type="submit" onclick="setName()">Submit</button>
         </form>
         <br />
         <a href="index.html"><button class="btn btn-success" type="submit">Restart</button></a>
     </div>
+    <script>
+        /*
+    function storeToDB() {
+        alert("Scored saved to Database successfully!");
+    }
+    */
+	function setName() {
+        let name = document.getElementById("name").value;
+        localStorage.setItem("Name", name);
+    }
+	
+    </script>
 </body>
 </html>
